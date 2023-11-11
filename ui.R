@@ -54,6 +54,16 @@ body <- dashboardBody(
       )
     ),
     tabItem(
+      tabName = "operationalReactor",
+      fluidRow(
+        box(
+          plotOutput("plotOperational"),
+          title = "Graphique en barre représentant les réacteurs opérationnels dans le monde",
+          width = 12
+        )
+      )
+    ),
+    tabItem(
       tabName = "mapReactor",
       fluidRow(
         tags$style(HTML("
@@ -112,6 +122,7 @@ sideBar <- dashboardSidebar(
   sidebarMenu(
     menuItem("Reactors' Capacity", tabName = "tabCapacity", icon = icon("bar-chart")),
     menuItem("Reactor Types", tabName = "tabReactor", icon = icon("bar-chart")),
+    menuItem("Operational Reactors", tabName = "operationalReactor", icon = icon("bar-chart")),
     menuItem("Reactors' Map", tabName = "mapReactor", icon = icon("map"))
   )
 )

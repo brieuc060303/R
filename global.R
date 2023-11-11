@@ -74,7 +74,7 @@ import <- function() {
   library(RColorBrewer)
   library(shinydashboard)
   library(shinydashboardPlus)
-  
+  library(ggthemes)
   # Read data from CSV file
   df <- read.csv('nuclear_power_plants.csv', sep = ';')
   
@@ -122,6 +122,25 @@ reactorType <- function(){
     scale_fill_manual(values = rep(bar_color, length(unique(df_rt$ReactorType))))  # Set bar color
   
   return(ReactorType)
+}
+
+Operational <- function() {
+  df_operation <- df %>% 
+    group_by(OperationalFrom_Year, isStillOperational) %>% 
+    summarise(count = n(), .groups = 'drop')
+  
+  operation <- ggplot(df_operation, aes(x = OperationalFrom_Year, y = count)) + 
+    geom_bar(aes(fill = isStillOperational), stat = 'identity') + 
+    theme_fivethirtyeight(12) + 
+    scale_fill_manual(name = '', values = c("OPERATING" = "darkgreen", "DECOMMISSIONED" = "darkred")) +
+    geom_vline(xintercept = 1986, color = 'black') + 
+    geom_vline(xintercept = 2011, color = 'black') + 
+    labs(title = 'Operational Dates of nuclear power plants', subtitle = '') + 
+    annotate("text", x = 1989, y = 45, label = 'Tchernobyl') + 
+    annotate("text", x = 2014, y = 45, label = 'Fukushima')
+  
+  return(operation)
+
 }
 
 # Import data at the beginning

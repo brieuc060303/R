@@ -13,6 +13,10 @@ function(input, output) {
     createReactorMap(df_filtered, input$yearSlider)
   })
   
+  output$plotOperational <- renderPlot({
+    Operational()
+  })
+  
   # Render the capacity plot
   output$plotCapacity <- renderPlot({
     capacityPlot()
