@@ -23,32 +23,37 @@ Dans le jeu de données que nous allons analyser, les informations fournies conc
 
  Les données proviennent de [kaggle ](https://www.kaggle.com/datasets/marchman/geo-nuclear-data).
 
-## User Guide
+# User Guide
 
-Pour utiliser ce dashboard, il vous faudra tout d'abord cloner le dépôt Git sur sa machine. Pour cela, vous pouvez vous placer dans le dossier souhaité à l'aide de la commande :
+Pour utiliser ce dashboard, il vous faudra tout d'abord cloner le dépôt Git sur sa machine. Pour cela, vous devez avant toute chose installer le package `git2r` et l'importer:
+
 ```sh
-$ cd /chemin/vers/votre/répertoire/de/projets
+>install.packages("git2r")
+>library(git2r)
 ```
-Puis cloner le dépôt Git avec la commande : 
+
+Vous devez ensuite désigner le dossier où vous souhaiter cloner le répertoire:
+
 ```sh
-$ git clone https://github.com/brieuc060303/R
+>destination_directory <- "chemin/vers/votre/répertoire"
 ```
-En cas de problème, vérifiez que vous êtes bien connecté avec vos identifiants Git.
-A présent, si vous regardez votre dossier, vous devriez y trouver une copie complète du dépôt Git.
-Vous devez alors lancer le fichier requirements.txt qui contient la liste des packages additionnels requis avec la commande :
+
+Ainsi que désigner le dépôt Git avec la commande :
 ```sh
-$ source("requirements.txt")
+>repo_url <- "https://github.com/brieuc060303/R"
 ```
-qui installera l’ensemble des dépendances nécessaires.
-Enfin, il vous suffit de lancer le dashboard avec la commande :
+
+Vous pouvez désormais cloner le dépôt avec la commande :
 ```sh
-$ Rscript app.R
+>git2r::clone(url = repo_url, local_path = destination_directory)
 ```
-Et vous pourrez y accéder à l'adresse suivante : 
+
+Pour lancer le projet, il vous suffit d'utiliser la commande:
+
 ```sh
-http://127.0.0.1:8050/
+>runApp()
 ```
-Pour stopper le dashboard, vous pouvez utiliser le raccourci `Ctrl + C` dans le terminal où vous l'avez lancé.
+Dans la console. Vous pouvez aussi démarrer le dashboard en cliquant sur **Run App** en haut à droite de l'éditeur de fichier sur RStudio.
 
 ##  Rapport d’analyse
 
