@@ -51,7 +51,7 @@ Vous pouvez désormais cloner le dépôt avec la commande :
 Pour lancer le projet, il vous suffit d'utiliser la commande:
 
 ```sh
->runApp()
+>shiny::runApp()
 ```
 Dans la console. Vous pouvez aussi démarrer le dashboard en cliquant sur **Run App** en haut à droite de l'éditeur de fichier sur RStudio.
 
